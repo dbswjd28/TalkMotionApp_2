@@ -135,10 +135,12 @@ public class MainActivity extends android.app.Activity implements SensorEventLis
             wasY = false;
             wasX = false;
             b.setText(R.string.off);
+            b.setBackground(getResources().getDrawable(R.drawable.rounded_corners_red));
         }
         else {
             isOn = true;
             b.setText(R.string.on);
+            b.setBackground(getResources().getDrawable(R.drawable.rounded_corners_green));
         }
     }
 
