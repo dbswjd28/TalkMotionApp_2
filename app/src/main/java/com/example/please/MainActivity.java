@@ -35,14 +35,16 @@ public class MainActivity extends android.app.Activity implements SensorEventLis
     // Triggered by a button push
     private boolean isOn = false;
 
-
-
+    private int modifier = -1;
 
 
     // Boolean values that stop it from repeating itself
-    private boolean wasX = false;
-    private boolean wasY = false;
-    private boolean wasZ = false;
+    private boolean wasXr = false;
+    private boolean wasXl = false;
+    private boolean wasYr = false;
+    private boolean wasYl = false;
+    private boolean wasZr = false;
+    private boolean wasZl = false;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -131,9 +133,12 @@ public class MainActivity extends android.app.Activity implements SensorEventLis
         Button b = findViewById(R.id.OnOff);
         if(isOn) {
             isOn = false;
-            wasZ = false;
-            wasY = false;
-            wasX = false;
+            wasZr = false;
+            wasZl = false;
+            wasYr = false;
+            wasYl = false;
+            wasXr = false;
+            wasXl = false;
             b.setText(R.string.off);
         }
         else {
@@ -194,24 +199,143 @@ public class MainActivity extends android.app.Activity implements SensorEventLis
      */
     public void checkMotion (final float ax, final float ay, final float az)
     {
-        if ((ax > 5 || ax < -5) && !(sm.isPlaying()) && ((ax > ay) && (ax > az) || (ax < ay) && (ax <az)) && !wasX) {
-            sm.x_move();
-            wasX = true;
-            wasY = false;
-            wasZ = false;
+        System.out.println(modifier);
+        if(modifier == 0){
+            if (ax > 10 && !(sm.isPlaying()) && ((ax > ay) && (ax > az))  && !wasXr) {
+                sm.modified_y1xr();
+                wasXr = true;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = false;
+                modifier = -1;
+            }
+            else if(ax < -10 && !sm.isPlaying() && ax < ay && ax < az && !wasXl) {
+                sm.modified_y1xl();
+                wasXr = false;
+                wasXl = true;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = false;
+                modifier = -1;
+            }
+            else if (az > 10 && !(sm.isPlaying()) && ((az > ay) && (az > ax)) && !wasZr) {
+                sm.modified_y1zr();
+                wasXr = false;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = true;
+                wasZl = false;
+                modifier = -1;
+            } else if(az < -10 && !sm.isPlaying() && az < ay && az < ax && !wasZl) {
+                sm.modified_y1zl();
+                wasXr = false;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = true;
+                modifier = -1;
+            }
+        } else if(modifier == 1) {
+            if (ax > 10 && !(sm.isPlaying()) && ((ax > ay) && (ax > az))  && !wasXr) {
+                sm.modified_y2xr();
+                wasXr = true;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = false;
+                modifier = -1;
+            }
+            else if(ax < -10 && !sm.isPlaying() && ax < ay && ax < az && !wasXl) {
+                sm.modified_y2xl();
+                wasXr = false;
+                wasXl = true;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = false;
+                modifier = -1;
+            }
+            else if (az > 10 && !(sm.isPlaying()) && ((az > ay) && (az > ax)) && !wasZr) {
+                sm.modified_y2zr();
+                wasXr = false;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = true;
+                wasZl = false;
+                modifier = -1;
+            } else if(az < -10 && !sm.isPlaying() && az < ay && az < ax && !wasZl) {
+                sm.modified_y2zl();
+                wasXr = false;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = true;
+                modifier = -1;
+            }
+        } else {
+            if (ax > 5 && !(sm.isPlaying()) && ((ax > ay) && (ax > az)) && !wasXr) {
+                sm.x_mover();
+                wasXr = true;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = false;
+            }
+            else if(ax < -5 && !sm.isPlaying() && ax < ay && ax < az && !wasXl) {
+                sm.x_movel();
+                wasXr = false;
+                wasXl = true;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = false;
+            }
+            else if (az > 5 && !(sm.isPlaying()) && ((az > ay) && (az > ax)) && !wasZr) {
+                sm.z_mover();
+                wasXr = false;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = true;
+                wasZl = false;
+            }
+            else if(az < -5 && !sm.isPlaying() && az < ay && az < ax && !wasZl) {
+                sm.z_movel();
+                wasXr = false;
+                wasXl = false;
+                wasYr = false;
+                wasYl = false;
+                wasZr = false;
+                wasZl = true;
+            }
+            else if ((ay > 5 && !sm.isPlaying()) && (ay > ax && ay > az) && !wasYr) {
+                modifier = 0;
+                wasXr = false;
+                wasXl = false;
+                wasYr = true;
+                wasYl = false;
+                wasZr = false;
+                wasZl = false;
+            } else if((ay < -5 && !sm.isPlaying()) && (ay < ax && ay < az) && !wasYl){
+                modifier = 1;
+                wasXr = false;
+                wasXl = false;
+                wasYr = false;
+                wasYl = true;
+                wasZr = false;
+                wasZl = false;
+            }
         }
-        else if ((az > 5 || az < -5) && !(sm.isPlaying()) && ((az > ay) && (az > ax) || (az < ay) && (az <ax)) && !wasZ) {
-            sm.z_move();
-            wasZ = true;
-            wasY = false;
-            wasX = false;
-        }
-        else if ((ay > 5 || ay < -5) && !(sm.isPlaying()) && ((ay > ax) && (ay > az) || (ay < ax) && (ay < az)) && !wasY) {
-            sm.y_move();
-            wasY = true;
-            wasX = false;
-            wasZ = false;
-        }
+
     }
 
     /**

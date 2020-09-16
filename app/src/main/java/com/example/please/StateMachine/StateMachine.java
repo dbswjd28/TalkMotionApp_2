@@ -31,9 +31,19 @@ public class StateMachine {
     public void toFront() { this.state = ONFRONT; }
     public void toUpright() { this.state = UPRIGHT; }
 
-    public void x_move() { this.state.x_move(); }
+    public void x_mover() { this.state.x_mover(); }
+    public void x_movel() {this.state.x_movel();}
     public void y_move() { this.state.y_move(); }
-    public void z_move() { this.state.z_move(); }
+    public void z_mover() { this.state.z_mover(); }
+    public void z_movel() {this.state.z_movel();}
+    public void modified_y1xr() {this.state.modified_y1xr();}
+    public void modified_y1xl() {this.state.modified_y1xl();}
+    public void modified_y1zr() {this.state.modified_y1zr();}
+    public void modified_y1zl() {this.state.modified_y1zl();}
+    public void modified_y2xr() {this.state.modified_y2xr();}
+    public void modified_y2xl() {this.state.modified_y2xl();}
+    public void modified_y2zr() {this.state.modified_y2zr();}
+    public void modified_y2zl() {this.state.modified_y2zl();}
 
     public boolean isPlaying() { return this.speaker.isPlaying(); }
     void say(String s) {

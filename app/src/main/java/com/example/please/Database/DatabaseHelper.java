@@ -1,5 +1,6 @@
 package com.example.please.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -29,7 +30,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 3);
         this.c = context;
         this.db = getWritableDatabase();
-
     }
 
     @Override
@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
             contentValues.put(GESTURES, gestureNames[x]);
-            contentValues.put(WORDS, gestureNewWords[x]);
+            //contentValues.put(WORDS, gestureNewWords[x]);
             contentValues.put(SCENARIOS, 1);
             try {
                 db.insert(TABLE_NAME, null, contentValues);
@@ -122,9 +122,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public String[] getNames() {
-        ArrayList<String> names = new ArrayList<>();
+        return c.getResources().getStringArray(R.array.names);
+        /*ArrayList<String> names = new ArrayList<>();
 
-        Cursor cursor = this.db.rawQuery(
+        @SuppressLint("Recycle") Cursor cursor = this.db.rawQuery(
                 "SELECT "+ WORDS + " FROM " +  TABLE_NAME + " WHERE " + SCENARIOS + "=" + 0, null);
                 //"SELECT " + (newName ? NEWWORDS : WORDS)  + " FROM " + TABLE_NAME, null);
         if (cursor.moveToFirst()) {
@@ -137,10 +138,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for(int i = 0; i < names.size(); i++) {
             returnNames[i] = names.get(i);
         }
-        return returnNames;
+        return returnNames;*/
     }
 
     public String[] getGestures() {
+        return gestureWords = c.getResources().getStringArray(R.array.gestures);
+        /*
         ArrayList<String> gestures = new ArrayList<>();
         Cursor cursor = this.db.rawQuery(
                 "SELECT " + GESTURES + " FROM " + TABLE_NAME+ " WHERE " + SCENARIOS + "=" + 0, null);
@@ -154,6 +157,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for(int i = 0; i < gestures.size(); i++) {
             returnGestures[i] = gestures.get(i);
         }
-        return returnGestures;
+        return returnGestures;*/
     }
 }
