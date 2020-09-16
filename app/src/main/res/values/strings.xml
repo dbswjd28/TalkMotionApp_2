@@ -7,24 +7,44 @@
         <item>upright_x</item>
         <item>upright_y</item>
         <item>upright_z</item>
-        <item>onback_x</item>
+        <item>onback_xr</item>
+        <item>onback_xl</item>
         <item>onback_y</item>
-        <item>onback_z</item>
+        <item>onback_zr</item>
+        <item>onback_zl</item>
         <item>onfront_x</item>
         <item>onfront_y</item>
         <item>onfront_z</item>
+        <item>modified_y1xr</item>
+        <item>modified_y1xl</item>
+        <item>modified_y1zr</item>
+        <item>modified_y1zl</item>
+        <item>modified_y2xr</item>
+        <item>modified_y2xl</item>
+        <item>modified_y2zr</item>
+        <item>modified_y2zl</item>
     </string-array>
 
     <string-array name="names">
         <item>Hello </item>
         <item>Yes </item>
         <item>Goodbye</item>
-        <item>I don"'"t care</item>
+        <item>Yes</item>
+        <item>No</item>
         <item>Here you go</item>
         <item>I don"'"t know</item>
+        <item>Great</item>
         <item>No</item>
         <item>That one</item>
         <item>Come here</item>
+        <item>Hello</item>
+        <item>How are you</item>
+        <item>Good morning</item>
+        <item>What"'"s up</item>
+        <item>Goodbye</item>
+        <item>Have a nice day</item>
+        <item>Good night</item>
+        <item>See you</item>
     </string-array>
 
 
