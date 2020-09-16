@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
             contentValues.put(GESTURES, gestureNames[x]);
-            contentValues.put(WORDS, gestureNewWords[x]);
+//            contentValues.put(WORDS, gestureNewWords[x]);
             contentValues.put(SCENARIOS, 1);
             try {
                 db.insert(TABLE_NAME, null, contentValues);

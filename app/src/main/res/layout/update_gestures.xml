@@ -10,8 +10,13 @@
         android:id="@+id/cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/rounded_corners_red"
         android:onClick="changeMain"
         android:text="@string/cancel"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,8 +55,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginBottom="52dp"
+        android:background="@drawable/rounded_corners"
         android:onClick="restoreToDefaultSettings"
         android:text="@string/restore_to_default"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -62,8 +69,10 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="60dp"
+        android:background="@drawable/rounded_corners_green"
         android:onClick="saveGes"
         android:text="@string/save_changes"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
